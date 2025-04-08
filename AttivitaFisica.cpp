@@ -3,8 +3,8 @@
 //
 #include "AttivitaFisica.h"
 
-AttivitaFisica::AttivitaFisica(const std::string& descrizione, double ore)
-        : descrizione(descrizione), ore(ore){}
+AttivitaFisica::AttivitaFisica(const std::string& descrizione, double ore, double calorie)
+        : descrizione(descrizione), ore(ore),calorie(calorie){}
 
 const std::string& AttivitaFisica::getDescrizione() const {
     return descrizione;
@@ -12,5 +12,8 @@ const std::string& AttivitaFisica::getDescrizione() const {
 
 double AttivitaFisica::getOre() const {
     return ore;
+}
+double AttivitaFisica::getCalorie() const {
+    return calorie;
 }
 

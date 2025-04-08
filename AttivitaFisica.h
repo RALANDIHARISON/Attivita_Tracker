@@ -8,15 +8,17 @@
 
 class AttivitaFisica {
 public:
-    AttivitaFisica(const std::string& descrizione, double ore);
+    AttivitaFisica(const std::string& descrizione, double ore, double calorie);
 
     const std::string& getDescrizione() const;
     double getOre() const;
+    double getCalorie() const;
 
 
 private:
     std::string descrizione;
     double ore;
+    double calorie;
 
 };
 
