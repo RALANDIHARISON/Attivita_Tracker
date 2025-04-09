@@ -17,10 +17,13 @@ public:
     const std::string &getNome() const;
 
     double getOreTotali() const;
+    double getCalorieTotali() const;
+
 
 private:
     std::string nome;
     double oreTotali;
+    double calorieTotali;
 };
 
 #endif //ATTIVITA_TRACKER_PARTECIPANTE_H

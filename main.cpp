@@ -3,8 +3,8 @@
 #include <limits>
 int main() {
     // Creiamo alcune attività fisiche
-    AttivitaFisica corsa("Corsa", 2.0);  // 2 ore
-    AttivitaFisica nuoto("Nuoto", 2.5);  // 2.5 ore
+    AttivitaFisica corsa("Corsa", 2.0, 500);  // 2 ore
+    AttivitaFisica nuoto("Nuoto", 2.5,600 );  // 2.5 ore
 
     // Creiamo i partecipanti
     Partecipante alessandra("Alessandra");
