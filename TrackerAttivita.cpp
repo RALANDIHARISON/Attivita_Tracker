@@ -40,6 +40,17 @@ for(auto& p : partecipanti) {
             perdente = &p;
         }
     }
+    // Visualizza il risultato
+    if (vincitore) {
+        std::cout << vincitore->getNome() << " vince con " << vincitore->getOreTotali() << " ore e "
+                  << vincitore->getCalorieTotali() << " calorie!" << std::endl;
+    }
+
+    if (perdente) {
+        std::cout << perdente->getNome() << " perde con " << perdente->getOreTotali() << " ore e "
+                  << perdente->getCalorieTotali() << " calorie." << std::endl;
+    }
+}
 
 
 
