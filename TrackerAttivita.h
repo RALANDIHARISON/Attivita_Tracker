@@ -13,7 +13,7 @@ public:
 
     void aggiungiPartecipante(const Partecipante& partecipante);
 
-
+    void determinaVincitore();
 
 private:
     std::vector<Partecipante> partecipanti;
