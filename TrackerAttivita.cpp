@@ -30,4 +30,16 @@ for(auto& p : partecipanti) {
         vincitore = &p;
     }
 }
+// Trova il perdente (colui con il totale più alto)
+    double maxTotale = -std::numeric_limits<double>::max();  // Per trovare il massimo totale
+    for (auto& p : partecipanti) {
+        double totale = p.getOreTotali() + p.getCalorieTotali();
+
+        if (totale > maxTotale) {
+            maxTotale = totale;
+            perdente = &p;
+        }
+    }
+
+
 
