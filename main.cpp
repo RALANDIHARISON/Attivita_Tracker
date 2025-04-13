@@ -29,6 +29,9 @@ int main() {
     marco.mostraStato();
     std::cout << std::endl;
 
+    // Determina il vincitore
+    tracker.determinaVincitore();
+
 
 
 
