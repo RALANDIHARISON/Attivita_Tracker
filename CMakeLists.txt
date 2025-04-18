@@ -3,10 +3,19 @@ project(Attivita_Tracker)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Attivita_Tracker main.cpp
-        AttivitaFisica.h
+add_subdirectory(test)
+
+add_subdirectory(test/lib/googletest)
+
+
+add_library(core
         AttivitaFisica.cpp
-        Partecipante.h
         Partecipante.cpp
-        TrackerAttivita.h
         TrackerAttivita.cpp)
+
+add_executable(Attivita_Tracker main.cpp)
+target_link_libraries(Attivita_Tracker core)
+
+
+
+
