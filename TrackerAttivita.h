@@ -6,6 +6,7 @@
 #define ATTIVITA_TRACKER_TRACKERATTIVITA_H
 #include <vector>
 #include "Partecipante.h"
+#include <string>
 
 class TrackerAttivita {
 public:
@@ -13,8 +14,11 @@ public:
 
     void aggiungiPartecipante(const Partecipante& partecipante);
 
-    std::string determinaVincitore();
+    std::string determinaVincitore() ;
     bool rimuoviPartecipante(const std::string& nome);
+
+    std::vector<Partecipante> primiTrePartecipanti() const ;
+
 
 private:
     std::vector<Partecipante> partecipanti;

@@ -4,6 +4,8 @@
 #include <iostream>
 #include "TrackerAttivita.h"
 #include <limits>
+#include <algorithm>
+#include <sstream>
 
 TrackerAttivita::TrackerAttivita() {}
 
@@ -41,17 +43,19 @@ for(auto& p : partecipanti) {
         }
     }
     // Eto no mijery ny valiny
+    std::ostringstream oss;
     if (vincitore) {
-        std::cout << vincitore->getNome() << " vince con " << vincitore->getOreTotali() << " ore e "
-                  << vincitore->getCalorieTotali() << " calorie!" << std::endl;
+        oss << vincitore->getNome() << " vince con " << vincitore->getOreTotali()
+            << " ore e " << vincitore->getCalorieTotali() << " calorie!\n";
     }
-
     if (perdente) {
-        std::cout << perdente->getNome() << " perde con " << perdente->getOreTotali() << " ore e "
-                  << perdente->getCalorieTotali() << " calorie." << std::endl;
+        oss << perdente->getNome() << " perde con " << perdente->getOreTotali()
+            << " ore e " << perdente->getCalorieTotali() << " calorie.";
     }
-    return vincitore->getNome();
+    return oss.str();
 }
+
+
 bool TrackerAttivita::rimuoviPartecipante(const std::string& nome) {
     for (auto it = partecipanti.begin(); it != partecipanti.end(); ++it) {
         if (it->getNome() == nome) {
@@ -61,6 +65,21 @@ bool TrackerAttivita::rimuoviPartecipante(const std::string& nome) {
     }
     return false; // nampina ito
 }
+std::vector<Partecipante> TrackerAttivita::primiTrePartecipanti() const {
+    std::vector<Partecipante> ordinati = partecipanti;
+
+    std::sort(ordinati.begin(), ordinati.end(), [](const Partecipante& a, const Partecipante& b) {
+        return (a.getOreTotali() + a.getCalorieTotali()) > (b.getOreTotali() + b.getCalorieTotali());
+    });
+
+    std::vector<Partecipante> top;
+    for (size_t i = 0; i < ordinati.size() && i < 3; ++i) {
+        top.push_back(ordinati[i]);
+    }
+
+    return top;
+}
+
 
 
 
