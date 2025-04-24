@@ -10,27 +10,27 @@ TrackerAttivita::TrackerAttivita() {}
 void TrackerAttivita::aggiungiPartecipante(const Partecipante& partecipante) {
     partecipanti.push_back(partecipante);
 }
-void TrackerAttivita::determinaVincitore() {
+std::string TrackerAttivita::determinaVincitore() {
     if(partecipanti.size() < 2) {
-        std::cout << "Servono almeno due partecipanti per determinare un vincitore." << std::endl;
-        return;
+       return   "Servono almeno due partecipanti per determinare un vincitore." ;
+
     }
 
-// inizializza con valori molto alti
+
 Partecipante* vincitore = nullptr;
 Partecipante* perdente = nullptr;
-double minTotale = std::numeric_limits<double>::max();  // Per trovare il minimo totale
+double minTotale = std::numeric_limits<double>::max();  // mba hijerena ny minimo totale
 
 for(auto& p : partecipanti) {
     double totale = p.getOreTotali() + p.getCalorieTotali();
 
-    // Se il totale è inferiore al minimo, aggiorna il vincitore
+
     if(totale < minTotale) {
         minTotale = totale;
         vincitore = &p;
     }
 }
-// Trova il perdente (colui con il totale più alto)
+// Trova il perdente (izay manana totale ngeza indrindra)
     double maxTotale = -std::numeric_limits<double>::max();  // Per trovare il massimo totale
     for (auto& p : partecipanti) {
         double totale = p.getOreTotali() + p.getCalorieTotali();
@@ -40,7 +40,7 @@ for(auto& p : partecipanti) {
             perdente = &p;
         }
     }
-    // Visualizza il risultato
+    // Eto no mijery ny valiny
     if (vincitore) {
         std::cout << vincitore->getNome() << " vince con " << vincitore->getOreTotali() << " ore e "
                   << vincitore->getCalorieTotali() << " calorie!" << std::endl;
@@ -50,6 +50,16 @@ for(auto& p : partecipanti) {
         std::cout << perdente->getNome() << " perde con " << perdente->getOreTotali() << " ore e "
                   << perdente->getCalorieTotali() << " calorie." << std::endl;
     }
+    return vincitore->getNome();
+}
+bool TrackerAttivita::rimuoviPartecipante(const std::string& nome) {
+    for (auto it = partecipanti.begin(); it != partecipanti.end(); ++it) {
+        if (it->getNome() == nome) {
+            partecipanti.erase(it);
+            return true;
+        }
+    }
+    return false; // nampina ito
 }
 
 
