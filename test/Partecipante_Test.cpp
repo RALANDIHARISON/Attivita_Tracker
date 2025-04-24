@@ -11,8 +11,9 @@ AttivitaFisica a("Nuoto", 1.0, 300);
 
 p.aggiungiAttivita(a);
 
-EXPECT_DOUBLE_EQ(p.getOreTotali(), 1.0);
-EXPECT_DOUBLE_EQ(p.getCalorieTotali(), 300);
-EXPECT_EQ(p.getNome(), "Luca");
+EXPECT_EQ(p.getAttivita().size(), 1.0);
+EXPECT_TRUE(p.rimoveAttivita("Nuoto"));
+EXPECT_EQ(p.getAttivita().size(), 0.0);
+EXPECT_FALSE(p.rimoveAttivita("NonEsiste"));
 }
 
