@@ -6,7 +6,7 @@
 
 AttivitaFisica::AttivitaFisica(const std::string& descrizione, double ore, double calorie)
         : descrizione(descrizione), ore(ore),calorie(calorie){
-    if (calorie < 0 || ore < 0) {
+    if (calorie < 0 ) {
         throw std::invalid_argument("Le calorie non possono essere negative");
     }
 }
