@@ -4,21 +4,41 @@
 // #include <iostream>
 #include "Partecipante.h"
 #include <iostream>
+#include<sstream>
+
 
 Partecipante::Partecipante(const std::string& nome)
         : nome(nome), oreTotali(0),calorieTotali(0) {}
 
 void Partecipante::aggiungiAttivita(const AttivitaFisica& attivita) {
+    listaAttivita.push_back(attivita);
     oreTotali += attivita.getOre();
     calorieTotali += attivita.getCalorie();
 
 }
 
-void Partecipante::mostraStato() const {
-    std::cout << "Stato partecipante " << nome << ":" << std::endl;
-    std::cout << "OreTotale: " << oreTotali << std::endl;
-    std::cout << "CalorieTotale: " << calorieTotali << std::endl;
+bool Partecipante::rimoveAttivita(const std::string & descrizione) {
+    for (auto it = listaAttivita.begin(); it != listaAttivita.end(); ++it) {
+        if (it->getDescrizione() == descrizione) {
+            oreTotali -= it->getOre();
+            calorieTotali -= it->getCalorie();
+            listaAttivita.erase(it);
+            return true;
+        }
+    }
+    return false;
+}
 
+const std::vector<AttivitaFisica>& Partecipante::getAttivita() const {
+    return listaAttivita;
+}
+
+std::string Partecipante::toString() const {
+    std::ostringstream oss;
+    oss << "Partecipante: " << nome << "\n"
+        << "Ore totali: " << oreTotali << "\n"
+        << "Calorie totali: " << calorieTotali;
+    return oss.str();
 }
 
 const std::string& Partecipante::getNome() const {
